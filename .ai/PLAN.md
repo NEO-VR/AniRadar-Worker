@@ -2,33 +2,35 @@
 
 ## Main objective
 
-[Main project objective]
+Ship a personal anime tracking Telegram bot, then harden it into a sellable product.
 
-## Roadmap
+## Phase 1 - Personal MVP
 
-### Phase 1: Project Setup and Understanding
+- [ ] T001 Project skeleton, config loader, SQLite schema
+- [ ] T002 Telethon interactive login script
+- [ ] T003 Alias model and episode number parser
+- [ ] T004 Channel scanner on a schedule
+- [ ] T005 New episode detection with dedupe
+- [ ] T006 Auto topic creation and NEW badge posting
+- [ ] T007 Bot commands: add_anime, add_channel, list, set_interval
 
-- [ ] Analyze project structure
-- [ ] Identify tech stack and dependencies
-- [ ] Verify install/run commands
-- [ ] Create initial project documentation
+## Phase 2 - Comfort features
 
-### Phase 2: Core Features
+- [ ] AniList integration for aliases and poster icons
+- [ ] Inline buttons: watched, mute
+- [ ] Weekly digest message
+- [ ] Next episode date prediction
+- [ ] Multi-source listing for one episode
 
-- [ ] [Core feature 1]
-- [ ] [Core feature 2]
-- [ ] [Core feature 3]
+## Phase 3 - Hardening
 
-### Phase 3: Quality and Testing
+- [ ] Logging and reconnect handling
+- [ ] Tests for parser and matcher
+- [ ] Two weeks of real running
 
-- [ ] Add validation
-- [ ] Add error handling
-- [ ] Add tests
-- [ ] Fix bugs
+## Phase 4 - Productization
 
-### Phase 4: Finalization
-
-- [ ] Improve UI/UX
-- [ ] Optimize performance
-- [ ] Prepare deployment notes
-- [ ] Write user documentation
+- [ ] Multi-tenant schema and onboarding
+- [ ] Telegram Stars payments
+- [ ] Admin panel and setup guide
+- [ ] Public demo group

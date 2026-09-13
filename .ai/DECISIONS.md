@@ -1,24 +1,26 @@
 # DECISIONS.md - Project Decisions
 
-## Decisions
+## D001 - Local AI project management
 
-### D001 - Use local AI project management
+Use .ai folder for plan, tasks, progress and decisions so any agent session
+can continue from disk.
 
-Date: Sun 09/13/2026
+## D002 - Matt Pocock skills
 
-Decision:
-Use `.ai/` folder to store project plan, tasks, progress, and decisions.
-Use `.agents/` folder for engineering skills and context.
+Use shared skills for grilling, TDD and code review.
 
-Reason:
-This allows the AI agent to continue work across multiple tasks without relying on chat memory.
+## D003 - Telethon user session for reading
 
-### D002 - Use Matt Pocock Skills
+Bots cannot read channels where they are not admin. A user session via
+Telethon reads any joined channel, which fits personal use.
+For the future product, offer bot-admin mode per customer.
 
-Date: Sun 09/13/2026
+## D004 - Multi-tenant ready schema
 
-Decision:
-Use engineering skills from Matt Pocock's repository for better development practices.
+All tables carry user_id from day one so the sellable version needs no
+schema migration.
 
-Reason:
-These skills enforce good engineering practices like TDD, code review, and systematic debugging.
+## D005 - Secrets only in .env
+
+.env is gitignored. The agent reads secrets from environment variables and
+never writes them into code or logs.
