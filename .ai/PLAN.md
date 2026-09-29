@@ -6,13 +6,13 @@ Ship a personal anime tracking Telegram bot, then harden it into a sellable prod
 
 ## Phase 1 - Personal MVP
 
-- [ ] T001 Project skeleton, config loader, SQLite schema
-- [ ] T002 Telethon interactive login script
-- [ ] T003 Alias model and episode number parser
-- [ ] T004 Channel scanner on a schedule
-- [ ] T005 New episode detection with dedupe
-- [ ] T006 Auto topic creation and NEW badge posting
-- [ ] T007 Bot commands: add_anime, add_channel, list, set_interval
+- [x] T001 Project skeleton, config loader, SQLite schema
+- [x] T002 Telethon interactive login script
+- [x] T003 Alias model and episode number parser
+- [x] T004 Channel scanner on a schedule
+- [x] T005 New episode detection with dedupe
+- [x] T006 Auto topic creation and NEW badge posting
+- [x] T007 Bot commands: add_anime, add_channel, list, set_interval
 
 ## Phase 2 - Comfort features
 

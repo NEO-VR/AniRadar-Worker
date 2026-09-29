@@ -1,1 +1,173 @@
-{"animes": []}
+{
+  "animes": [
+    {
+      "title": "Solo Leveling",
+      "aliases": [
+        "Solo Leveling",
+        "我独自升级",
+        "俺だけレベルアップな件",
+        "سولو لولینگ",
+        "سولولولینگ",
+        "Solo Leveling Arise",
+        "SL"
+      ],
+      "channels": [
+        "@AWsub",
+        "@AnimeList"
+      ],
+      "is_active": true
+    },
+    {
+      "title": "Jujutsu Kaisen",
+      "aliases": [
+        "Jujutsu Kaisen",
+        "咒术回战",
+        "呪術廻戦",
+        "جوجوتسو کایسن",
+        "جوجوتسو",
+        "JJK",
+        "Jujutsu Kaisen Season 2",
+        "Jujutsu Kaisen S2"
+      ],
+      "channels": [
+        "@AWsub",
+        "@AnimeList"
+      ],
+      "is_active": true
+    },
+    {
+      "title": "Dandadan",
+      "aliases": [
+        "Dandadan",
+        "胆大党",
+        "ダンダダン",
+        "داندادان",
+        "دندان",
+        "DD"
+      ],
+      "channels": [
+        "@AWsub",
+        "@AnimeList"
+      ],
+      "is_active": true
+    },
+    {
+      "title": "One Piece",
+      "aliases": [
+        "One Piece",
+        "ワンピース",
+        "海贼王",
+        "وان پیس",
+        "ون پیس",
+        "OP"
+      ],
+      "channels": [
+        "@AWsub",
+        "@AnimeList"
+      ],
+      "is_active": true
+    },
+    {
+      "title": "Demon Slayer: Kimetsu no Yaiba",
+      "aliases": [
+        "Demon Slayer",
+        "Kimetsu no Yaiba",
+        "鬼灭之刃",
+        "鬼滅の刃",
+        "دیمون اسلایر",
+        "کیمتسو یا‌ایبا",
+        "قاتل شیاطین",
+        "DS"
+      ],
+      "channels": [
+        "@AWsub",
+        "@AnimeList"
+      ],
+      "is_active": true
+    },
+    {
+      "title": "Attack on Titan",
+      "aliases": [
+        "Attack on Titan",
+        "Shingeki no Kyojin",
+        "进击的巨人",
+        "進撃の巨人",
+        "حمله تایتان‌ها",
+        "شینگکی نو کویوجین",
+        "AOT",
+        "Attack on Titan Final Season"
+      ],
+      "channels": [
+        "@AWsub",
+        "@AnimeList"
+      ],
+      "is_active": true
+    },
+    {
+      "title": "Chainsaw Man",
+      "aliases": [
+        "Chainsaw Man",
+        "チェンソーマン",
+        "电锯人",
+        "چینسو من",
+        "چینسو من",
+        "CSM"
+      ],
+      "channels": [
+        "@AWsub",
+        "@AnimeList"
+      ],
+      "is_active": true
+    },
+    {
+      "title": "Spy × Family",
+      "aliases": [
+        "Spy × Family",
+        "Spy x Family",
+        "SPY×FAMILY",
+        "间谍过家家",
+        "スパイファミリー",
+        "جاسوس خانواده",
+        "اسپای فامیلی"
+      ],
+      "channels": [
+        "@AWsub",
+        "@AnimeList"
+      ],
+      "is_active": true
+    },
+    {
+      "title": "Frieren: Beyond Journey's End",
+      "aliases": [
+        "Frieren",
+        "Frieren: Beyond Journey's End",
+        "Sousou no Frieren",
+        "葬送のフリーレン",
+        "送葬的芙莉莲",
+        "فریرن",
+        "سوسو نو فریرن"
+      ],
+      "channels": [
+        "@AWsub",
+        "@AnimeList"
+      ],
+      "is_active": true
+    },
+    {
+      "title": "Oshi no Ko",
+      "aliases": [
+        "Oshi no Ko",
+        "【推しの子】",
+        "我推的孩子",
+        "اوشی نو کو",
+        "اوشی نو کو",
+        "Oshi"
+      ],
+      "channels": [
+        "@AWsub",
+        "@AnimeList"
+      ],
+      "is_active": true
+    }
+  ]
+}
