@@ -55,6 +55,11 @@ EPISODE_PATTERNS = [
     
     # Plain number with context (lower confidence, used as fallback)
     (r'\b(\d+(?:\.\d+)?)\s*(?:ep|episode|e)\b', 0.6),  # 12 ep, 12 episode
+
+    # Persian formats
+    (r'قسمت\s*(\d+(?:\.\d+)?)', 1.0),           # قسمت 12
+    (r'اپیزود\s*(\d+(?:\.\d+)?)', 1.0),         # اپیزود 12
+    (r'بخش\s*(\d+(?:\.\d+)?)', 0.9),            # بخش 12
 ]
 
 
@@ -80,32 +85,51 @@ def normalize_alias(alias: str) -> str:
 
 def match_aliases(text: str, aliases: List[str]) -> List[str]:
     """
-    Find which aliases match in the given text.
-    Returns list of matched aliases.
+    پیدا کردن alias هایی که در متن پیام تطابق دارند.
+    منطق تطابق:
+      - alias های ۳ کاراکتر یا کوتاه‌تر فقط در صورتی تطابق می‌خورند که به‌صورت کلمه کامل باشند
+      - alias های بلندتر با کلمه کامل تطابق می‌خورند (نه زیررشته داخل کلمه دیگر)
     """
     normalized_text = normalize_text(text)
     matched = []
     for alias in aliases:
         normalized_alias = normalize_alias(alias)
-        if normalized_alias:
-            # Check as whole word or substring
-            # Use word boundaries for better matching
-            pattern = r'(^|\s)' + re.escape(normalized_alias) + r'($|\s)'
-            if re.search(pattern, ' ' + normalized_text + ' '):
-                matched.append(alias)
-            elif normalized_alias in normalized_text:
-                # Fallback: substring match
-                matched.append(alias)
+        if not normalized_alias:
+            continue
+        # تطابق با مرز کلمه (چپ و راست باید فاصله یا شروع/پایان باشد)
+        pattern = r'(^|\s)' + re.escape(normalized_alias) + r'($|\s)'
+        if re.search(pattern, ' ' + normalized_text + ' '):
+            matched.append(alias)
+            continue
+        # فقط alias های بلند می‌توانند زیررسته باشند (مانند عنوان ژاپنی)
+        if len(normalized_alias) >= 5 and normalized_alias in normalized_text:
+            matched.append(alias)
     return matched
 
 
 def parse_episode_number(text: str) -> Optional[ParseResult]:
     """
-    Parse episode number from text using multiple regex patterns.
-    Returns the best match (highest confidence) or None if no match.
+    استخراج شماره قسمت از متن پیام با استفاده از الگوهای مختلف.
+    بهترین تطابق (بالاترین کانفیدانس) را برمی‌گرداند یا None.
+    پست‌های لیست پیشنهادات روزانه (مانند «#1. One Piece (1999)») فیلتر می‌شوند.
     """
     best_match: Optional[ParseResult] = None
-    
+
+    # تشخیص پست‌های چند-انیمه‌ای یا لیست پیشنهادات:
+    # پست‌هایی که چند عنوان مختلف (دارای «عنوان اثر:» یا «#N.») دارند فیلتر می‌شوند
+    title_header_count = len(re.findall(r'عنوان\s*اثر', text))
+    list_item_count = len(re.findall(r'(?:^|\n)\s*#?\d+\.\s', text))
+    # پست‌های کشویی (Download Box) که چند انیمه و چند Ep دارند
+    ep_line_count = len(re.findall(r'Ep\s*\d+', text, re.IGNORECASE))
+    # پست‌های لیست «پر دانلود» که برای چند انیمه لینک دانلود دارند
+    download_link_count = len(re.findall(r'لینک\s*های?\s*دانلود', text))
+    # پست‌های با خلاصه داستان و چند عنوان (فهرست‌های روزانه)
+    synopsis_count = len(re.findall(r'خلاصه\s*داستان', text))
+    if (title_header_count >= 2 or list_item_count >= 3 or ep_line_count >= 5
+            or download_link_count >= 1 or synopsis_count >= 2):
+        # این پست چند انیمه را پوشش می‌دهد، نه یک قسمت مشخص
+        return None
+
     for pattern, confidence in EPISODE_PATTERNS:
         matches = list(re.finditer(pattern, text, re.IGNORECASE))
         for match in matches:
@@ -125,6 +149,10 @@ def parse_episode_number(text: str) -> Optional[ParseResult]:
                 confidence=confidence
             )
             
+            # نادیده گرفتن سال‌های میلادی که به اشتباه به عنوان شماره قسمت تشخیص داده می‌شوند
+            if 1900 <= ep_num <= 2099:
+                continue
+
             if best_match is None or result.confidence > best_match.confidence:
                 best_match = result
     
